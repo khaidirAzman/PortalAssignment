@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center" style="height:50vh">
+    <div class="table" *ngIf="tasks.length">
+<!--      <div *ngIf="tasks$ | async as tasks">-->
+      <div>
+        <p-table [value]="tasks | slice: startPage: endPage" [tableStyle]="{ 'min-width': '50rem'}">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Due date</th>
+              <th>Priority</th>
+              <th>Category</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-task>
+            <tr>
+              <td>{{ task.title }}</td>
+              <td>{{ task.description }}</td>
+              <td>{{ task.due }}</td>
+              <td><span [ngClass]="getStatusClassPriority(task.priority)">{{ task.priority | titlecase}}</span></td>
+              <td><span [ngClass]="getStatusClassCategory(task.category)">{{ task.category | titlecase}}</span></td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <div *ngIf="!tasks.length">
+      No data to display
+    </div>
+    <p-paginator (onPageChange)="onPageChange($event)" *ngIf="tasks.length"
+                 [first]="1" [rows]="1" [totalRecords]="getTotalRecords()">
+    </p-paginator>
+    <div class="filterSection">
+      <div class="filterButton">
+        <h4>High</h4>
+        <p-inputSwitch [(ngModel)]="filterHigh" class="high-switch"
+                       (click)="applyFilter()"></p-inputSwitch>
+      </div>
+      <div class="filterButton">
+        <h4>Medium</h4>
+        <p-inputSwitch [(ngModel)]="filterMedium" class="medium-switch"
+                       (click)="applyFilter()"></p-inputSwitch>
+      </div>
+      <div class="filterButton">
+        <h4>Low</h4>
+        <p-inputSwitch [(ngModel)]="filterLow" class="low-switch"
+                       (click)="applyFilter()"></p-inputSwitch>
+      </div>
+    </div>
+  </div>
+</div>

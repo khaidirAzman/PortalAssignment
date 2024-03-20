@@ -1,0 +1,10 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+  </ng-template>
+  <div *ngIf="user">
+    Hi, {{user.name}}
+    <a href="#" class="p-button-label ng-star-inserted"
+       (click)="logoutUser()" style="margin-top: 1rem; margin-left: 1rem">Log out</a>
+  </div>
+</p-menubar>
+<h2>{{getUrl() | titlecase}}</h2>

@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center" style="height:50vh">
+    <div class="jumbotron jumbotron-fluid" *ngIf="!user">
+      <div class="container">
+        <p class="lead">Please log in to continue</p>
+        <div [formGroup]="loginForm" class="card col-sm-4">
+          <span class="p-input-icon-left my-2">
+            <i class="pi pi-user"></i>
+            <input formControlName="username" type="text"
+                   pInputText placeholder="Username" (keyup.enter)="submit()">
+          </span>
+          <span class="p-input-icon-left my-2">
+            <p-password formControlName="password" placeholder="Password" [feedback]=false
+                        [toggleMask]="true" (keyup.enter)="submit()">
+            </p-password>
+          </span>
+          <span class="p-input-icon-left my-2 col-sm-6">
+            <p-button label="Log in" [text]="true" [raised]="true"
+                      [disabled]="!loginForm.valid" (click)="submit()" severity="danger"></p-button>
+          </span>
+          <span class="errorMessage" [hidden]="!isWrongPassword">
+            Wrong combination of username and password</span>
+        </div>
+      </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid" *ngIf="user">
+      <div class="container">
+        <h1>Hello, {{user.name}}. Welcome to Portal.</h1>
+        <h5>You have {{user.role | uppercase}} role.</h5>
+      </div>
+    </div>
+  </div>
+</div>

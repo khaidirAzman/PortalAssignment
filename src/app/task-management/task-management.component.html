@@ -1,0 +1,97 @@
+<div class="filterSection">
+  <div class="filterButton">
+    <h6>Personal</h6>
+    <p-inputSwitch [(ngModel)]="filterPersonal" class="personal-switch"
+                   (click)="applyFilter()"></p-inputSwitch>
+  </div>
+  <div class="filterButton">
+    <h6>Work</h6>
+    <p-inputSwitch [(ngModel)]="filterWork" class="work-switch"
+                   (click)="applyFilter()"></p-inputSwitch>
+  </div>
+</div>
+<div class="container" style="margin-bottom: 100px">
+  <div class="row justify-content-center align-items-center"
+       style="margin: 0 1rem 0 1rem">
+    <div class="col-sm">
+      <form [formGroup]="taskForm">
+        <strong>Title</strong>: <input type="text" class="form-control taskInput"
+               formControlName="title">
+        <strong>Description</strong>: <textarea type="text" class="form-control textAreaInput"
+                  formControlName="description"></textarea>
+        <strong>Due date</strong>: <input type="date" class="form-control taskInput"
+               formControlName="dueDate" placeholder="Due date">
+        <strong>Priority</strong>: <select class="form-select dropdownItems" formControlName="priority">
+          <option value="{{priority}}" *ngFor="let priority of priorities; let i = index">
+            {{priority | titlecase}}</option>
+        </select>
+        <strong>Category</strong>: <select class="form-select dropdownItems" formControlName="category">
+          <option value="{{category}}" *ngFor="let category of categories; let i = index">
+            {{category | titlecase}}</option>
+        </select>
+        <p-button label="Add Task" icon="pi pi-check" severity="success" [disabled]="!taskForm.valid"
+                  (click)="saveNewTask()"></p-button>
+      </form>
+    </div>
+  </div>
+  <p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <div class="row justify-content-center align-items-center"
+         style="margin: 0 1rem 0 1rem">
+      <div class="col-sm">
+        <form [formGroup]="updateTaskForm">
+          <strong>Title</strong>:
+          <input type="text" class="form-control taskInput"
+                 formControlName="title">
+          <strong>Description</strong>:
+          <textarea type="text" class="form-control textAreaInput"
+                    formControlName="description"></textarea>
+          <strong>Due date</strong>:
+          <input type="date" class="form-control taskInput"
+                 formControlName="dueDate" placeholder="Due date">
+          <strong>Priority</strong>:
+          <select class="form-select dropdownItems" formControlName="priority">
+          <option value="{{priority}}" *ngFor="let priority of priorities; let i = index" [selected]="isSelectedPriority(priority)">
+            {{priority | titlecase}}</option>
+          </select>
+          <strong>Category</strong>:
+          <select class="form-select dropdownItems" formControlName="category">
+          <option value="{{category}}" *ngFor="let category of categories; let i = index" [selected]="isSelectedCategory(category)">
+            {{category | titlecase}}</option>
+          </select>
+          <p-button label="Update" icon="pi pi-check" severity="success" [disabled]="!updateTaskForm.valid"
+                    (click)="updateTask()"></p-button>
+        </form>
+      </div>
+    </div>
+  </p-dialog>
+  <div class="row" style="margin-top: 2rem" *ngIf="tasks.length">
+    <div class="" *ngFor="let task of tasks" style="width: 300px; margin-bottom: 1rem">
+      <p-card header="{{task.title}}" subheader="{{task.due}}" [style]="{ height: '350px' }" styleClass="ngx-color">
+        <p style="max-height: 50px">{{task.description}}</p>
+        <ng-template pTemplate="footer">
+          <p-button label="{{task.priority | titlecase}}"
+                    styleClass="{{priorityStyleClass(task.priority)}}" ></p-button>
+          <p-button label="{{task.category | titlecase}}"
+                    styleClass="{{categoryStyleClass(task.category)}}" [style]="{ 'margin-left': '.5em' }"></p-button>
+          <br/>
+          <div style="float: right; margin-top: 1rem;">
+            <button class="btn btn-outline-primary" style="margin-right: 3px;"
+                    [pTooltip]="'Update'" [tooltipPosition]="'top'"
+                    (click)="openUpdateModal(task)">
+              <i class="pi pi-pencil"></i>
+            </button>
+            <button class="btn btn-outline-danger"  style="margin-right: 3px"
+                    [pTooltip]="'Delete'" [tooltipPosition]="'top'"
+                    (click)="deleteTask(task)">
+              <i class="pi pi-times"></i>
+            </button>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+  <div *ngIf="!tasks.length" style="margin-top: 1rem">
+    No data to display
+  </div>
+</div>
+

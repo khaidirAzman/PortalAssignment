@@ -1,0 +1,14 @@
+@import "bootstrap/dist/css/bootstrap.css";
+
+.loginInput {
+  border-bottom: solid rgb(236, 29, 35);
+  margin-bottom: 1rem;
+}
+
+.loginButton {
+  background-color: rgb(236, 29, 35);
+}
+
+.errorMessage {
+  color: rgb(236, 29, 35);
+}

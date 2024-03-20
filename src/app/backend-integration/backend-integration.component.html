@@ -1,0 +1,10 @@
+
+<div style="margin-top: 1rem">Getting data from
+  <a href="{{httpService.url}}" target="_blank">{{httpService.url}}</a></div>
+
+<p-card>
+  <div *ngIf="data$ | async as data">
+    <pre>{{data | json}}</pre>
+  </div>
+</p-card>
+

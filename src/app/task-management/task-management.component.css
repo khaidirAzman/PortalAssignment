@@ -1,0 +1,66 @@
+@import "bootstrap/dist/css/bootstrap.css";
+
+.taskInput {
+  border-bottom: solid darkgray 1px;
+  width: 30%;
+  margin-bottom: 3px;
+}
+.textAreaInput {
+  width: 30%;
+  margin-bottom: 3px;
+  border: solid darkgray 1px;
+}
+
+.dropdownItems {
+  border: solid rgb(128, 128, 128) 1px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 30%;
+}
+
+.filterButton {
+   float: right;
+   margin-left: 1rem;
+ }
+
+.filterSection {
+  margin-bottom: 1rem;
+  width: 75%;
+}
+/*card style*/
+.ngx-color {
+  &.p-card .p-card-title {
+    height: 70px;
+  }
+}
+/*filter button style*/
+:host ::ng-deep .personal-switch
+.p-inputswitch.p-inputswitch-checked
+.p-inputswitch-slider,
+:host ::ng-deep .personal-switch
+.p-inputswitch.p-inputswitch-checked:hover
+.p-inputswitch-slider {
+  background: #9333ea;
+}
+
+:host ::ng-deep .personal-switch
+.p-inputswitch-slider::before {
+  height: 1rem;
+  width: 1rem;
+  margin-top: -0.5rem;
+}
+:host ::ng-deep .work-switch
+.p-inputswitch.p-inputswitch-checked
+.p-inputswitch-slider,
+:host ::ng-deep .work-switch
+.p-inputswitch.p-inputswitch-checked:hover
+.p-inputswitch-slider {
+  background: #0ea5e9;
+}
+
+:host ::ng-deep .work-switch
+.p-inputswitch-slider::before {
+  height: 1rem;
+  width: 1rem;
+  margin-top: -0.5rem;
+}

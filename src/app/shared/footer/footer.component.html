@@ -1,0 +1,10 @@
+<div class="footer">
+  <p-dock [model]="dockItems" position="bottom">
+    <ng-template pTemplate="item" let-item>
+      <div class="dockContainer">
+        <i class="pi {{item.icon}} dockItem"
+           pTooltip="{{item.label}}" tooltipPosition="top"></i>
+      </div>
+    </ng-template>
+  </p-dock>
+</div>

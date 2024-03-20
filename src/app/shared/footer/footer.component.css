@@ -1,0 +1,13 @@
+.footer {
+  position: relative;
+  margin-top: -150px;
+  height: 150px;
+  clear: both;
+}
+.dockContainer{
+  cursor: pointer;
+}
+.dockItem {
+  font-size: 2rem;
+  color: black;
+}

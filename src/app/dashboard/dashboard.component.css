@@ -1,0 +1,79 @@
+.filterButton {
+  float: right;
+  margin-left: 1rem;
+}
+
+.filterSection {
+  margin-bottom: 1rem;
+  width: 95%;
+}
+
+.highPriority {
+  color: #ef4444;
+  font-weight: bold;
+}
+.mediumPriority {
+  color: #3B82F6;
+  font-weight: bold;
+}
+.lowPriority {
+  color: #22c55e;
+  font-weight: bold;
+}
+.personalCategory {
+  color: #a855f7;
+  font-weight: bold;
+}
+.workCategory {
+  color: #0ea5e9;
+  font-weight: bold;
+}
+
+/*filter button style*/
+:host ::ng-deep .high-switch
+.p-inputswitch.p-inputswitch-checked
+.p-inputswitch-slider,
+:host ::ng-deep .high-switch
+.p-inputswitch.p-inputswitch-checked:hover
+.p-inputswitch-slider {
+  background: #ef4444;
+}
+
+:host ::ng-deep .high-switch
+.p-inputswitch-slider::before {
+  height: 1rem;
+  width: 1rem;
+  margin-top: -0.5rem;
+}
+:host ::ng-deep .medium-switch
+.p-inputswitch.p-inputswitch-checked
+.p-inputswitch-slider,
+:host ::ng-deep .medium-switch
+.p-inputswitch.p-inputswitch-checked:hover
+.p-inputswitch-slider {
+  background: #3B82F6;
+}
+
+:host ::ng-deep .medium-switch
+.p-inputswitch-slider::before {
+  height: 1rem;
+  width: 1rem;
+  margin-top: -0.5rem;
+}
+
+:host ::ng-deep .low-switch
+.p-inputswitch.p-inputswitch-checked
+.p-inputswitch-slider,
+:host ::ng-deep .medium-switch
+.p-inputswitch.p-inputswitch-checked:hover
+.p-inputswitch-slider {
+  background: #22c55e;
+}
+
+:host ::ng-deep .low-switch
+.p-inputswitch-slider::before {
+  height: 1rem;
+  width: 1rem;
+  margin-top: -0.5rem;
+}
+
